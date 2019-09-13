@@ -51,20 +51,30 @@ p {
 }
 
 /* ヘッダー */
+.navbar {
+  background-color: teal;
+}
+
+.navbar-right {
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff;
+}
 
 #logo {
   float: left;
   margin-right: 10px;
   font-size: 1.7em;
   color: #fff;
-  text-transform: uppercase;
+  text-transform: capitalize;
   letter-spacing: -1px;
   padding-top: 9px;
   font-weight: bold;
+  font-style: oblique;
 }
 
 #logo:hover {
-  color: #fff;
+  color: silver;
   text-decoration: none;
 }
 
