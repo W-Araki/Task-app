@@ -55,12 +55,6 @@ p {
   background-color: teal;
 }
 
-.navbar-right {
-  font-size: 14px;
-  font-weight: 700;
-  color: #fff;
-}
-
 #logo {
   float: left;
   margin-right: 10px;
@@ -76,6 +70,15 @@ p {
 #logo:hover {
   color: silver;
   text-decoration: none;
+}
+
+li .header-list {
+  font-weight: bold;
+  color: #fff !important ;
+}
+
+li .header-list:hover {
+  color: silver !important ;
 }
 
 /* デバッグウインドウ */
