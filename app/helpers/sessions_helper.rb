@@ -34,6 +34,11 @@ module SessionsHelper
     end
   end
   
+  #このcurrent_userはメソッドを呼び出し、その返り値とuserを比較している
+  def current_user?(user)
+    user == current_user
+  end
+  
   def logged_in?
     !current_user.nil?
   end
