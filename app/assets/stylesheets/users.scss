@@ -17,3 +17,13 @@
     vertical-align: middle;
   }
 }
+
+// プロフィール
+#table-user {
+  table-layout: fixed; width: 100%;
+  th {
+    vertical-align: middle;
+    text-align: center;
+    white-space: nowrap;
+  }
+}
