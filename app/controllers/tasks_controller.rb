@@ -2,15 +2,15 @@ class TasksController < ApplicationController
   before_action :set_user
   
   def index
-    @tasks = @user.tasks
+    @tasks = @user.tasks.paginate(page: params[:page], per_page: 20)
   end
   
   def show
-    @task = Task.find(params[:id])
+    @task = @user.tasks.find(params[:id])
   end
   
   def new
-    @task = Task.new
+    @task = @user.tasks.new
   end
   
   def create
@@ -24,11 +24,11 @@ class TasksController < ApplicationController
   end
   
   def edit
-    @task = Task.find(params[:id])
+    @task = @user.tasks.find(params[:id])
   end
   
   def update
-    @task = Task.find(params[:id])
+    @task = @user.tasks.find(params[:id])
     if @task.update_attributes(task_params)
       flash[:success] = "タスクを更新しました。"
       redirect_to user_task_url(@user, @task)
@@ -38,7 +38,8 @@ class TasksController < ApplicationController
   end
   
   def destroy
-    @user.tasks.destroy
+    @task = @user.tasks.find(params[:id])
+    @task.destroy
     flash[:success] = "タスクを削除しました。"
     redirect_to user_tasks_url @user
   end
