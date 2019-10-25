@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :logged_in_user, only: [:index, :show, :edit, :update, :destroy]
-  before_action :correct_user, only: [:edit, :update]
+  before_action :correct_user, only: [:index, :show, :edit, :update]
   before_action :admin_user, only: :destroy
   
   def index
@@ -53,25 +53,5 @@ class UsersController < ApplicationController
     
     def set_user
       @user = User.find(params[:id])
-    end
-    
-    def logged_in_user
-      unless logged_in?
-      store_location
-      flash[:danger] = "ログインしてください。"
-      redirect_to login_url
-      end
-    end
-    
-    def correct_user
-      unless current_user?(@user)
-      redirect_to root_url
-      end
-    end
-    
-    def admin_user
-      unless current_user.admin?
-      redirect_to root_url
-      end
     end
 end
