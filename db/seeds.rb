@@ -5,7 +5,7 @@ User.create!(name: "管理者",
              password: "password",
              password_confirmation: "password",
              admin: true)
-              
+
 100.times do |n|
   name = Faker::Name.name
   email = "sample-#{n+1}@email.com"
@@ -16,6 +16,8 @@ User.create!(name: "管理者",
                password_confirmation: password)
 end
 
+puts "Users Created"
+
 admin_user = User.first
 guest_user = User.find(2)
 
@@ -25,4 +27,6 @@ guest_user = User.find(2)
     admin_user.tasks.create!(name: task_name, description: description)
     guest_user.tasks.create!(name: task_name, description: description)
 end
+
+puts "Tasks Created"
 

@@ -11,15 +11,22 @@
       </tr>
     </thead>
     
-    <% @users.each do |user| %>
+  <% @users.each do |user| %>
     <tr>
-      <td><%= link_to user.name, user %></td>
+      <td>
+        <%= link_to user.name, user %>
+        <% if user.admin? %>
+          <span class="label label-primary label-user-division">管理者</span>
+        <% else %>
+          <span class="label label-success label-user-division">一般</span>
+        <% end %>
+      </td>
       <!--adminユーザはadminユーザ（自分自身）を消せない-->
-      <td><% if current_user.admin? && !current_user?(user) %>
-            <%= link_to "削除", user, method: :delete,
-                data: { confirm: "削除してよろしいですか？" },
-                class: "btn btn-danger" %>
-          <% end %>
+      <td>
+        <% if current_user.admin? && !current_user?(user) %>
+          <%= link_to "削除", user, method: :delete,
+            data: { confirm: "削除してよろしいですか？" }, class: "btn btn-danger" %>
+        <% end %>
       </td>
     </tr>
     <% end %>
