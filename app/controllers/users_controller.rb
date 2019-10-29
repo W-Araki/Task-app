@@ -13,6 +13,13 @@ class UsersController < ApplicationController
   end
 
   def new
+    # unless @user.admin? && !current_user　自分で考えたやつ
+    #☆まずは条件分岐。User.newは後に書く！
+    # ↓user.admin? だけだと別の管理者が当該管理者のsignupページを開けてしまう。
+    if logged_in? && !current_user.admin?
+    flash[:info] = "既にアカウント作成済みです。"
+    redirect_to current_user
+    end
     @user = User.new
   end
   

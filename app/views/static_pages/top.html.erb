@@ -8,9 +8,11 @@
     <p>TaskAppは簡易ToDo管理ツールです。</p>
     <p>↓↓初めてのご利用↓↓</p>
     
-    <section class="btn-lg">
+    <% if logged_in? && !current_user.admin? %>
+      <%= link_to "アカウント作成", signup_path, class: "btn btn-lg btn-success #{"disabled"}" %>
+    <% else %>
       <%= link_to "アカウント作成", signup_path, class: "btn btn-lg btn-success" %>
-    </section>
+    <% end %>
       
     <!--<section class="btn-md">-->
     <!--<%= link_to "ゲストログイン（管理者権限）", "#", class: "btn btn-md btn-danger" %>-->
