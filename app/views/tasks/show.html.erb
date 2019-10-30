@@ -4,7 +4,7 @@
 
 <div class="row">
     <div class="col-md-10 col-md-offset-1">
-        <table class="table table-bordered", id="table-task">
+        <table class="table table-bordered" id="table-task">
             <tbody>
                 <tr>
                     <th class="active col-md-2">ID</th>
@@ -16,7 +16,7 @@
                 </tr>
                 <tr>
                     <th class="active">詳細</th>
-                    <td><%= raw Rinku.auto_link(@task.description, :all, 'target="_blank"') %></td>
+                    <td><%= raw Rinku.auto_link(safe_join(@task.description.split("\n"), tag(:br)))%></td>
                 </tr>    
                 <tr>
                     <th class="active">作成日</th>
